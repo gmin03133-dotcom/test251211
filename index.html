@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 / 회원가입</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background:#f5f6f7;
+            margin:0;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container {
+            width: 380px;
+            background:#fff;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 0 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align:center;
+            margin-bottom:20px;
+            color:#333;
+        }
+
+        .tabs {
+            display:flex;
+            margin-bottom:20px;
+        }
+
+        .tab {
+            flex:1;
+            padding:10px;
+            text-align:center;
+            cursor:pointer;
+            background:#eee;
+            border-radius:5px;
+        }
+
+        .tab.active {
+            background:#4CAF50;
+            color:#fff;
+        }
+
+        .form {
+            display:none;
+        }
+
+        .form.active {
+            display:block;
+        }
+
+        input {
+            width:100%;
+            padding:12px;
+            margin:8px 0;
+            border:1px solid #ccc;
+            border-radius:5px;
+        }
+
+        button {
+            width:100%;
+            padding:12px;
+            background:#4CAF50;
+            color:#fff;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+            font-size:16px;
+            margin-top:10px;
+        }
+
+        button:hover {
+            background:#45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="tabs">
+        <div class="tab active" onclick="showForm('login')">로그인</div>
+        <div class="tab" onclick="showForm('signup')">회원가입</div>
+    </div>
+
+    <!-- 로그인 폼 -->
+    <form id="login" class="form active">
+        <h2>로그인</h2>
+        <input type="text" placeholder="아이디" required>
+        <input type="password" placeholder="비밀번호" required>
+        <button type="submit">로그인</button>
+    </form>
+
+    <!-- 회원가입 폼 -->
+    <form id="signup" class="form">
+        <h2>회원가입</h2>
+        <input type="text" placeholder="아이디" required>
+        <input type="email" placeholder="이메일" required>
+        <input type="password" placeholder="비밀번호" required>
+        <input type="password" placeholder="비밀번호 확인" required>
+        <button type="submit">회원가입</button>
+    </form>
+</div>
+
+<script>
+    function showForm(formName) {
+        document.querySelectorAll('.form').forEach(f => f.classList.remove('active'));
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+
+        document.getElementById(formName).classList.add('active');
+        event.target.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
