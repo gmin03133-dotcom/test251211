@@ -1,145 +1,192 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인 / 회원가입</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AI 소개 템플릿</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            margin: 0;
-            font-family: "Helvetica", "Arial", sans-serif;
-            background: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #111;
-        }
-
-        /* 네이버 링크 메뉴 중앙 정렬 */
-        ol {
-            list-style: none;
-            margin: 0 0 30px 0; /* 아래 간격 */
-            padding: 0;
-            text-align: center;
-        }
-
-        .li a {
-            text-decoration: none;
-            color: #000;
-            font-size: 14px;
-            border-bottom: 1px solid transparent;
-        }
-
-        .li a:hover {
-            border-bottom: 1px solid #000;
-        }
-
-        .container {
-            width: 320px;
-            text-align: center; /* 네이버 링크와 자연스럽게 정렬 */
-        }
-
-        .tabs {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 24px;
-        }
-
-        .tab {
-            padding: 8px 0;
-            flex: 1;
-            text-align: center;
-            cursor: pointer;
-            font-size: 15px;
-            border-bottom: 1px solid #ddd;
-            color: #777;
-        }
-
-        .tab.active {
-            border-bottom: 1.5px solid #000;
-            color: #000;
-        }
-
-        .form {
-            display: none;
-        }
-
-        .form.active {
-            display: block;
-        }
-
-        input {
-            width: 100%;
-            border: none;
-            border-bottom: 1px solid #ccc;
-            padding: 12px 0;
-            margin-bottom: 18px;
-            font-size: 15px;
-            outline: none;
-        }
-
-        input:focus {
-            border-bottom: 1px solid #000;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px 0;
-            background: #000;
-            color: #fff;
-            border: none;
-            font-size: 15px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #222;
-        }
+      /* 간단한 카드 애니메이션 */
+      .fade-up { transform: translateY(8px); opacity: 0; transition: all .35s ease; }
+      .fade-up.show { transform: translateY(0); opacity: 1; }
     </style>
-</head>
-<body>
+  </head>
+  <body class="bg-gray-50 min-h-screen p-6 font-sans text-gray-800">
+    <div class="max-w-5xl mx-auto">
+      <header class="flex items-start justify-between mb-6">
+        <div>
+          <h1 id="headerText" class="text-3xl font-extrabold leading-tight">내가 자주 사용하는 AI(ChatGPT)</h1>
+          <p id="subText" class="mt-1 text-gray-600">내 작업 효율을 높여주는 지능형 비서 — 글쓰기, 요약, 코딩, 아이디어까지.</p>
+        </div>
 
-<div class="container">
+        <div class="flex items-center gap-3">
+          <div class="bg-white rounded-full p-1 shadow-sm flex gap-1">
+            <button data-tone="natural" class="toneBtn px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-indigo-500 to-violet-500 text-white">자연스러운</button>
+            <button data-tone="professional" class="toneBtn px-3 py-1 rounded-full text-sm font-medium text-gray-600 hover:bg-gray-100">전문적인</button>
+            <button data-tone="funny" class="toneBtn px-3 py-1 rounded-full text-sm font-medium text-gray-600 hover:bg-gray-100">유머러스</button>
+          </div>
+          <button id="previewBtn" class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-md shadow hover:shadow-md">Preview</button>
+        </div>
+      </header>
 
-    <!-- 네이버 링크: 탭 위쪽 가운데 -->
-    <ol>
-        <li class="li">
-            <a href="https://www.naver.com" target="_blank">NAVER</a>
-        </li>
-    </ol>
+      <main class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <section class="md:col-span-2 bg-white p-6 rounded-2xl shadow">
+          <h2 class="text-xl font-semibold mb-4">📌 주요 기능</h2>
 
-    <div class="tabs">
-        <div class="tab active" onclick="showForm('login')">로그인</div>
-        <div class="tab" onclick="showForm('signup')">회원가입</div>
+          <div id="featuresGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <!-- JS가 삽입 -->
+          </div>
+
+          <div class="mt-6">
+            <h2 class="text-xl font-semibold mb-3">🌟 장점</h2>
+            <ul id="prosList" class="space-y-2">
+              <!-- JS가 삽입 -->
+            </ul>
+          </div>
+
+          <div class="mt-6">
+            <h2 class="text-xl font-semibold mb-3">⚠️ 단점</h2>
+            <ul id="consList" class="space-y-2">
+              <!-- JS가 삽입 -->
+            </ul>
+          </div>
+
+          <div class="mt-6 flex gap-3">
+            <button id="ctaBtn" class="px-5 py-2 rounded-full bg-indigo-600 text-white font-semibold shadow">더 사용해보기</button>
+            <button class="px-5 py-2 rounded-full border border-gray-200 text-gray-700">공유하기</button>
+          </div>
+        </section>
+
+        <aside class="bg-white p-6 rounded-2xl shadow flex flex-col gap-4">
+          <div>
+            <h3 class="text-lg font-semibold">한눈에 보기</h3>
+            <p class="mt-2 text-sm text-gray-600">간단 요약과 바로 사용할 수 있는 포인트를 제공한다.</p>
+          </div>
+
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <h4 class="text-sm font-medium mb-2">요약</h4>
+            <p id="summaryText" class="text-sm text-gray-700">이 도구는 "지능형 비서"로서 작업 속도를 올리고 아이디어를 제공한다. 하지만 최신 정보 검증은 필요하다.</p>
+          </div>
+
+          <div class="p-3 border rounded-lg">
+            <h4 class="text-sm font-medium mb-2">빠른 팁</h4>
+            <ol class="text-sm text-gray-700 list-decimal list-inside space-y-1">
+              <li>질문을 구체적으로 적어 응답 정확도 향상</li>
+              <li>숫자·사실 확인은 출처 검토</li>
+              <li>톤(친근/전문/유머)을 버튼으로 즉시 변경</li>
+            </ol>
+          </div>
+
+          <div class="mt-auto flex gap-2">
+            <button class="flex-1 px-4 py-2 rounded-md border">PPT용 변환</button>
+            <button class="flex-1 px-4 py-2 rounded-md border">블로그용 변환</button>
+          </div>
+        </aside>
+      </main>
+
+      <footer class="mt-8 text-center text-sm text-gray-500">템플릿은 필요에 따라 문구·목록을 편집하여 사용하세요.</footer>
     </div>
 
-    <!-- 로그인 -->
-    <form id="login" class="form active">
-        <input type="text" placeholder="아이디" required>
-        <input type="password" placeholder="비밀번호" required>
-        <button type="submit">로그인</button>
-    </form>
+    <script>
+      const data = {
+        tones: {
+          natural: {
+            header: '내가 자주 사용하는 AI(ChatGPT)',
+            subtitle: '내 작업 효율을 높여주는 지능형 비서 — 글쓰기, 요약, 코딩, 아이디어까지.',
+            cta: '더 사용해보기',
+            summary: '이 도구는 "지능형 비서"로서 작업 속도를 올리고 아이디어를 제공한다. 하지만 최신 정보 검증은 필요하다.'
+          },
+          professional: {
+            header: 'AI 어시스턴트(ChatGPT) — 업무용 소개',
+            subtitle: '다양한 업무에서 생산성을 높여주는 도구로, 문서 작성·요약·분석·코딩 지원에 최적화되어 있습니다.',
+            cta: '업무 적용 사례 보기',
+            summary: '업무 생산성 향상에 초점을 둔 AI 도구입니다. 문서, 분석, 코딩 지원을 통해 반복 업무를 줄여줍니다.'
+          },
+          funny: {
+            header: '내 비밀무기: 똑똑한 AI 친구',
+            subtitle: '아이디어 막힐 때, 출근길 멘붕 올 때 옆에서 속 시원히 말해주는 녀석.',
+            cta: '친구에게 소개하기',
+            summary: '가볍게 아이디어를 꺼내고 기분 전환용으로 쓰기 좋은 AI 친구입니다.'
+          }
+        },
+        features: [
+          { title: '글쓰기 보조', desc: '초안 작성, 문체 정리, 이메일·보고서 지원' },
+          { title: '정보 정리·요약', desc: '문서의 핵심을 빠르게 요약' },
+          { title: '아이디어 발상', desc: '콘텐츠·네이밍·기획 아이디어 제공' },
+          { title: '코딩 지원', desc: '코드 작성, 설명, 디버깅 보조' },
+          { title: '학습 파트너', desc: '어려운 개념을 쉽게 설명' },
+          { title: '대화형 도우미', desc: '생각 정리용 대화 상대' }
+        ],
+        pros: [
+          '빠르고 즉각적인 응답',
+          '다재다능 — 글, 코드, 기획, 분석까지',
+          '24시간 사용 가능',
+          '사용자 요청에 맞춘 맞춤형 응답',
+          '장기 대화의 맥락 유지'
+        ],
+        cons: [
+          '최신 정보나 수치 확인이 필요함',
+          '질문이 모호하면 엉뚱한 답변이 나올 수 있음',
+          '인간 특유의 감성과 완벽히 동일하지 않음',
+          '미묘한 감정 뉘앙스 포착에 한계'
+        ]
+      };
 
-    <!-- 회원가입 -->
-    <form id="signup" class="form">
-        <input type="text" placeholder="아이디" required>
-        <input type="email" placeholder="이메일" required>
-        <input type="password" placeholder="비밀번호" required>
-        <input type="password" placeholder="비밀번호 확인" required>
-        <button type="submit">회원가입</button>
-    </form>
-</div>
+      // 초기 렌더
+      const featuresGrid = document.getElementById('featuresGrid');
+      const prosList = document.getElementById('prosList');
+      const consList = document.getElementById('consList');
 
-<script>
-    function showForm(name) {
-        document.querySelectorAll('.form').forEach(f => f.classList.remove('active'));
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      data.features.forEach(f => {
+        const card = document.createElement('article');
+        card.className = 'p-4 border rounded-lg fade-up show';
+        card.innerHTML = `<h3 class="font-semibold">${f.title}</h3><p class="mt-1 text-sm text-gray-600">${f.desc}</p>`;
+        featuresGrid.appendChild(card);
+      });
 
-        document.getElementById(name).classList.add('active');
-        event.target.classList.add('active');
-    }
-</script>
+      data.pros.forEach(p => {
+        const li = document.createElement('li');
+        li.className = 'flex gap-3 items-start';
+        li.innerHTML = `<svg class="mt-1 text-green-600 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-gray-700">${p}</span>`;
+        prosList.appendChild(li);
+      });
 
-</body>
+      data.cons.forEach(c => {
+        const li = document.createElement('li');
+        li.className = 'flex gap-3 items-start';
+        li.innerHTML = `<svg class="mt-1 text-red-500 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg><span class="text-gray-700">${c}</span>`;
+        consList.appendChild(li);
+      });
+
+      // Tone 버튼 동작
+      document.querySelectorAll('.toneBtn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const t = btn.getAttribute('data-tone');
+          applyTone(t);
+          // 버튼 스타일 토글
+          document.querySelectorAll('.toneBtn').forEach(b => b.classList.remove('bg-gradient-to-r','from-indigo-500','to-violet-500','text-white'));
+          btn.classList.add('bg-gradient-to-r','from-indigo-500','to-violet-500','text-white');
+        });
+      });
+
+      function applyTone(toneKey) {
+        const tone = data.tones[toneKey];
+        document.getElementById('headerText').textContent = tone.header;
+        document.getElementById('subText').textContent = tone.subtitle;
+        document.getElementById('ctaBtn').textContent = tone.cta;
+        document.getElementById('summaryText').textContent = tone.summary;
+      }
+
+      // Preview 버튼 (간단한 애니메이션 효과)
+      document.getElementById('previewBtn').addEventListener('click', () => {
+        document.querySelectorAll('.fade-up').forEach((el, i) => {
+          el.classList.remove('show');
+          setTimeout(() => el.classList.add('show'), i * 60);
+        });
+      });
+
+      // 페이지 로드 시 초기 톤 적용
+      applyTone('natural');
+    </script>
+  </body>
 </html>
